@@ -1,0 +1,13 @@
+** sch_path: /headless/Desktop/DSRT SEM6/opamp6.sch
+.subckt opamp6 vdd vpos vneg vout ibias vss
+*.PININFO ibias:I vneg:I vpos:I vout:O vdd:B vss:B
+XM1 ibias ibias vss vss sky130_fd_pr__nfet_01v8 L=1 W=2.5 nf=2
+XM2 net1 net1 vdd vdd sky130_fd_pr__pfet_01v8 L=1 W=5 nf=2
+XM3 net3 ibias vss vss sky130_fd_pr__nfet_01v8 L=1 W=2.5 nf=2
+XM4 net2 net1 vdd vdd sky130_fd_pr__pfet_01v8 L=1 W=5 nf=2
+XM5 net1 vneg net3 vss sky130_fd_pr__nfet_01v8 L=1 W=5 nf=2
+XM6 net2 vpos net3 vss sky130_fd_pr__nfet_01v8 L=1 W=5 nf=2
+XM7 vout net2 vdd vdd sky130_fd_pr__pfet_01v8 L=1 W=8 nf=5
+XM8 vout ibias vss vss sky130_fd_pr__nfet_01v8 L=1 W=5 nf=2
+XC1 net2 vout sky130_fd_pr__cap_mim_m3_1 W=20 L=10
+.ends

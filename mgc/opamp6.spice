@@ -1,0 +1,42 @@
+* NGSPICE file created from opamp6.ext - technology: sky130A
+
+.subckt sky130_fd_pr__nfet_01v8_T3GQRW B D0 G0 S1 G1
+X0 S1 G0 D0 B sky130_fd_pr__nfet_01v8 ad=0.18125 pd=1.54 as=0.3625 ps=3.08 w=1.25 l=1
+X1 a_229_n125# G1 S1 B sky130_fd_pr__nfet_01v8 ad=0.3625 pd=3.08 as=0.18125 ps=1.54 w=1.25 l=1
+.ends
+
+.subckt sky130_fd_pr__pfet_01v8_ES5D3S B D0 G0 S1 G1
+X0 S1 G0 D0 B sky130_fd_pr__pfet_01v8 ad=0.3625 pd=2.79 as=0.725 ps=5.58 w=2.5 l=1
+X1 a_229_n250# G1 S1 B sky130_fd_pr__pfet_01v8 ad=0.725 pd=5.58 as=0.3625 ps=2.79 w=2.5 l=1
+.ends
+
+.subckt sky130_fd_pr__nfet_01v8_WNWSEE B D0 G0 S1 G1
+X0 S1 G0 D0 B sky130_fd_pr__nfet_01v8 ad=0.3625 pd=2.79 as=0.725 ps=5.58 w=2.5 l=1
+X1 a_229_n250# G1 S1 B sky130_fd_pr__nfet_01v8 ad=0.725 pd=5.58 as=0.3625 ps=2.79 w=2.5 l=1
+.ends
+
+.subckt sky130_fd_pr__pfet_01v8_G7ACLL B D0 G0 S1 G1 D2 G2 S3 G3 D4 S4 G4
+X0 S3 G2 D2 B sky130_fd_pr__pfet_01v8 ad=0.232 pd=1.89 as=0.232 ps=1.89 w=1.6 l=1
+X1 S1 G0 D0 B sky130_fd_pr__pfet_01v8 ad=0.232 pd=1.89 as=0.464 ps=3.78 w=1.6 l=1
+X2 D2 G1 S1 B sky130_fd_pr__pfet_01v8 ad=0.232 pd=1.89 as=0.232 ps=1.89 w=1.6 l=1
+X3 D4 G3 S3 B sky130_fd_pr__pfet_01v8 ad=0.232 pd=1.89 as=0.232 ps=1.89 w=1.6 l=1
+X4 S4 G4 D4 B sky130_fd_pr__pfet_01v8 ad=0.464 pd=3.78 as=0.232 ps=1.89 w=1.6 l=1
+.ends
+
+.subckt sky130_fd_pr__cap_mim_m3_1_UCYAL9 C2 C1
+X0 C1 C2 sky130_fd_pr__cap_mim_m3_1 l=10 w=20
+.ends
+
+.subckt opamp6 ibias vneg vpos vout vdd vss
+XXM1 VSUBS XM1/D0 ibias XM1/S1 ibias sky130_fd_pr__nfet_01v8_T3GQRW
+XXM2 XM2/B XM2/D0 XM4/G1 XM2/S1 XM4/G1 sky130_fd_pr__pfet_01v8_ES5D3S
+XXM3 VSUBS XM3/D0 ibias XM3/S1 ibias sky130_fd_pr__nfet_01v8_T3GQRW
+XXM4 XM4/B XM4/D0 XM4/G1 XM4/S1 XM4/G1 sky130_fd_pr__pfet_01v8_ES5D3S
+XXM5 VSUBS XM5/D0 vneg XM5/S1 vneg sky130_fd_pr__nfet_01v8_WNWSEE
+XXM6 VSUBS XM6/D0 vpos XM6/S1 vpos sky130_fd_pr__nfet_01v8_WNWSEE
+XXM7 XM7/B XM7/D0 XM7/G0 XM7/S1 XM7/G1 XM7/D2 vout XM7/S3 XM7/G3 XM7/D4 XM7/S4 XM7/G4
++ sky130_fd_pr__pfet_01v8_G7ACLL
+XXM8 VSUBS XM8/D0 ibias XM8/S1 ibias sky130_fd_pr__nfet_01v8_WNWSEE
+XXC1 vout XC1/C1 sky130_fd_pr__cap_mim_m3_1_UCYAL9
+.ends
+
